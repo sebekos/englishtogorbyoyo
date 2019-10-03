@@ -1,0 +1,86 @@
+/* Global */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #C0C0C0;
+  }
+
+input[type='text']{
+    display: inline-block;
+    padding: .4rem .5rem;
+    font-size: 1.2rem;
+    border-radius: 0;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+}
+
+button {
+    display: inline-block;
+    padding: .4rem .5rem;
+    font-size: 1.2rem;
+    border: 1px solid transparent;
+    background-color: green;
+    color: #fff;
+}
+
+.container{
+    max-width: 800px;
+    min-width: 400px;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.header{
+    height: 100px;
+    background-color: gray;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.title{
+    font-size: 2rem;
+    margin-left: 20px;
+}
+
+.name{
+    justify-self: right;
+    margin-right: 20px;
+}
+
+#display{
+    width: 100%;
+    background-color: black;
+    padding: .3rem;
+    margin: 1rem auto;
+}
+
+#display p{
+    color:yellow;
+    padding: .5rem;
+    font-size: 2rem;
+}
+
+#alert{
+    width: fit-content;
+    margin: .5rem auto;
+}
+
+#alert p{
+    margin: 0;
+    padding: .4rem 2rem;
+    color:white;
+}
+
+.danger{
+    background-color: red;
+}
+
+.success{
+    background-color: green;
+}
