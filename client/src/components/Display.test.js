@@ -10,7 +10,7 @@ describe('<Display />', () => {
         const wrapper = shallow(<Display db={{ translation: [], text: 'test' }} />)
         expect(wrapper.find('div div').isEmpty()).toBe(true)
     })
-    it('<Display/> Should two <p/>', () => {
+    it('<Display/> Should display two <p/>', () => {
         const wrapper = shallow(<Display db={{ translation: ['1d3d3'], text: 'test' }} />)
         expect(wrapper.find('p')).toHaveLength(2)
     })
