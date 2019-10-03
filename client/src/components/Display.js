@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 const Display = ({ db: { translation, text } }) => {
     return (
-        <Fragment>
+        <div>
             {translation && translation.length > 0 ? (
                 <Fragment>
                     <div>
@@ -13,7 +13,7 @@ const Display = ({ db: { translation, text } }) => {
                     </div>
                 </Fragment>
             ) : null}
-        </Fragment>
+        </div>
 
     )
 }
