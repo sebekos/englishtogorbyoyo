@@ -31,33 +31,33 @@ const TextSchema = new mongoose.Schema({
     }
 });
 
-Text = mongoose.model('text', TextSchema);
+const Text = mongoose.model('text', TextSchema);
 
 // -------------------------------------------------------------
 // Express routes
 // -------------------------------------------------------------
 app.post('/api/translate', async (req, res) => {
-    let textToTranslate = req.body.translate;
+    const textToTranslate = req.body.translate;
 
     // Verify text format
-    let verifyEnglish = englishVerification(textToTranslate);
+    const verifyEnglish = englishVerification(textToTranslate);
     if (verifyEnglish) {
         return res.send({ error: 'Input English string should be all LOWERCASE and have no punctuation' })
     }
 
     // Get english to Dorbdorb array from API
-    let resData = await translateEnglishToDorbdorb(textToTranslate);
+    const resData = await translateEnglishToDorbdorb(textToTranslate);
 
     // Translate Dorbdorb to Gorbyoyo
-    let gorbArray = translateDorbToGorb(resData.data);
+    const gorbArray = translateDorbToGorb(resData.data);
 
     // Verify Gorbyoyo
-    let verifyResponse = await verifyDorb(gorbArray.join(""));
+    const verifyResponse = await verifyDorb(gorbArray.join(""));
 
     // If success then save to mongoDB
     if (verifyResponse) {
         try {
-            let field = new Text({ text: textToTranslate, translation: gorbArray });
+            const field = new Text({ text: textToTranslate, translation: gorbArray });
             await field.save();
             res.status(200).send({ translation: gorbArray, text: textToTranslate });
         } catch (err) {
@@ -70,7 +70,7 @@ app.post('/api/translate', async (req, res) => {
 
 app.get('/api/history', async (req, res) => {
     try {
-        let text = await Text.find().sort({ $natural: -1 });
+        const text = await Text.find().sort({ $natural: -1 });
         res.json(text);
     } catch (err) {
         res.status(500).send('Server Error');
@@ -100,7 +100,7 @@ const translateEnglishToDorbdorb = text => {
 const verifyDorb = text => {
     return new Promise(async (resolve, reject) => {
         try {
-            apiRes = await axios.post(
+            await axios.post(
                 'https://72exx40653.execute-api.us-east-1.amazonaws.com/prod/confirmtranslation',
                 { textToVerify: text },
                 { headers: { 'Content-Type': 'application/json' } }
@@ -120,10 +120,11 @@ const englishVerification = text => {
         return true;
     return false;
 }
+
 const translateDorbToGorb = items => {
     return items.map(item => {
-        let char = item.match(/[a-z]/).pop();
-        let nums = item.split(char);
+        const char = item.match(/[a-z]/).pop();
+        const nums = item.split(char);
         return char + 'yo' + (parseInt(nums[0]) + parseInt(nums[1]));
     });
 }

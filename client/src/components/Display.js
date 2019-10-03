@@ -9,7 +9,7 @@ const Display = ({ db: { translation, text } }) => {
                         <p>"{text}"</p>
                     </div>
                     <div id='display'>
-                        {translation.map((item, index) => { return <p key={index}>{item}</p> })}
+                        <p>{translation.join("")}</p>
                     </div>
                 </Fragment>
             ) : null}

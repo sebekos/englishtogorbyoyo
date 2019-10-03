@@ -25,9 +25,8 @@ button {
 }
 
 .container{
-    max-width: 800px;
+    max-width: fit-content;
     min-width: 400px;
-    width: 80%;
     margin: auto;
     overflow: hidden;
     text-align: center;
@@ -63,7 +62,7 @@ button {
 #display p{
     color:yellow;
     padding: .5rem;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 #alert{
