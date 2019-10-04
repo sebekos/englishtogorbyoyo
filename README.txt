@@ -4,7 +4,7 @@ Requires NodeJs
 1. 'git clone git@github.com:sebekos/englishtogorbyoyo.git'
 2. 'cd englishtogorbyoyo'
 3. 'npm install react react-dom react-scripts'
-4. Follow the database setup below then 'npm run dev'
+4. Follow the database setup below then in the main directory 'npm run dev'
 
 
 Datebase setup =>
